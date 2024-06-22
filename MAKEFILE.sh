@@ -39,4 +39,4 @@ if [ -f $DIR/.gitconfig ]; then
   ln -sf $DIR/.dotfiles/git/.gitconfig $DIR
 fi
 
-exec bash
+# exec bash
