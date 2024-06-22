@@ -38,5 +38,5 @@ if [ -f $DIR/.gitconfig ]; then
   mv $DIR/.gitconfig $DIR/.dotfiles/archive/git/.gitconfig
   ln -sf $DIR/.dotfiles/git/.gitconfig $DIR
 fi
-
-# exec bash
+exit
+exec bash
