@@ -26,7 +26,7 @@ if [ -f $DIR/.profile ]; then
   ln -sf $DIR/.dotfiles/.profile $DIR
 fi
 
-if [ -f $DIR/.config/neofetch/conf.conf ]; then
+if [ -f $DIR/.config/neofetch/config.conf ]; then
   mkdir -p $DIR/.dotfiles/archive/neofetch
   mkdir -p $DIR/.config/neofetch
   mv $DIR/.config/neofetch/config.conf $DIR/.dotfiles/archive/neofetch/config.conf
