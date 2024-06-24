@@ -15,6 +15,8 @@ apt install htop ripgrep fzf neofetch git gh zoxide curl unzip wget tldr -y
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
+curl -fsSL https://tailscale.com/install.sh | sh
+
 mkdir -p $DIR/.dotfiles/archive/
 if [ -f $DIR/.bashrc ]; then
   mv $DIR/.bashrc $DIR/.dotfiles/archive/.bashrc
@@ -38,5 +40,9 @@ if [ -f $DIR/.gitconfig ]; then
   mv $DIR/.gitconfig $DIR/.dotfiles/archive/git/.gitconfig
   ln -sf $DIR/.dotfiles/git/.gitconfig $DIR
 fi
+
+tailscale status
+
 exit
 exec bash
+
