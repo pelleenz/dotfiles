@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # sudo MAKEFILE.sh /home/{user}
+TS="False"
 
 if [[ "$1" != "" ]]; then
   DIR="$1"
@@ -15,7 +16,12 @@ apt install htop ripgrep fzf neofetch git gh zoxide curl unzip wget tldr -y
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
-curl -fsSL https://tailscale.com/install.sh | sh
+read -p "Install Tailscale (y/n)?" choice
+case "$choice" in 
+  y|Y ) curl -fsSL https://tailscale.com/install.sh | sh; TS="True";;
+  n|N ) echo "continue without Tailscale";;
+  * ) echo "invalid";;
+esac
 
 mkdir -p $DIR/.dotfiles/archive/
 if [ -f $DIR/.bashrc ]; then
@@ -41,7 +47,9 @@ if [ -f $DIR/.gitconfig ]; then
   ln -sf $DIR/.dotfiles/git/.gitconfig $DIR
 fi
 
-tailscale status
+if [[ $TS == "True" ]]; then
+ tailscale status
+fi
 
 exit
 exec bash
