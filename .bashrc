@@ -114,6 +114,7 @@ fi
 
 alias clear='clear && neofetch'
 alias ll='ls -la'
+alias la='ls -l'
 
 eval "$(oh-my-posh init bash)"
 eval "$(oh-my-posh init bash --config ~/.dotfiles/oh-my-posh/themes/active.json)"
