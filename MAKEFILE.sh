@@ -16,6 +16,10 @@ apt install htop ripgrep fzf neofetch git gh zoxide curl unzip wget tldr -y
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
+git config --global user.mail "pe@pelleenz.com"
+git config --global user.name "pelleenz"
+
+
 read -p "Install Tailscale (y/n)?" choice
 case "$choice" in 
   y|Y ) curl -fsSL https://tailscale.com/install.sh | sh; TS="True";;
