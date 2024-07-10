@@ -113,8 +113,8 @@ if ! shopt -oq posix; then
 fi
 
 alias clear='clear && neofetch'
-alias ll='ls -la'
-alias ls='ls -l'
+alias ll='ls -lha'
+alias ls='ls -lh'
 
 eval "$(oh-my-posh init bash)"
 eval "$(oh-my-posh init bash --config ~/.dotfiles/oh-my-posh/themes/active.json)"
