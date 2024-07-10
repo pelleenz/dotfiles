@@ -12,7 +12,7 @@ fi
 apt update
 apt upgrade -y
 
-apt install htop ripgrep fzf neofetch git gh zoxide curl unzip wget tldr -y
+apt install vim htop ripgrep fzf neofetch git gh zoxide curl unzip wget tldr -y
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
