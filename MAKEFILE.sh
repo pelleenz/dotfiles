@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # sudo MAKEFILE.sh /home/{user}
+TS="False"
 
 if [[ "$1" != "" ]]; then
   DIR="$1"
@@ -15,6 +16,13 @@ apt install htop ripgrep fzf neofetch git gh zoxide curl unzip wget tldr -y
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
+read -p "Install Tailscale (y/n)?" choice
+case "$choice" in 
+  y|Y ) curl -fsSL https://tailscale.com/install.sh | sh; TS="True";;
+  n|N ) echo "continue without Tailscale";;
+  * ) echo "invalid";;
+esac
+
 mkdir -p $DIR/.dotfiles/archive/
 if [ -f $DIR/.bashrc ]; then
   mv $DIR/.bashrc $DIR/.dotfiles/archive/.bashrc
@@ -26,7 +34,7 @@ if [ -f $DIR/.profile ]; then
   ln -sf $DIR/.dotfiles/.profile $DIR
 fi
 
-if [ -f $DIR/.config/neofetch/conf.conf ]; then
+if [ -f $DIR/.config/neofetch/config.conf ]; then
   mkdir -p $DIR/.dotfiles/archive/neofetch
   mkdir -p $DIR/.config/neofetch
   mv $DIR/.config/neofetch/config.conf $DIR/.dotfiles/archive/neofetch/config.conf
@@ -38,5 +46,11 @@ if [ -f $DIR/.gitconfig ]; then
   mv $DIR/.gitconfig $DIR/.dotfiles/archive/git/.gitconfig
   ln -sf $DIR/.dotfiles/git/.gitconfig $DIR
 fi
+
+if [[ $TS == "True" ]]; then
+ tailscale status
+fi
+
 exit
 exec bash
+
